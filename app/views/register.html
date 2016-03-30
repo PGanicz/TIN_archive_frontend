@@ -1,0 +1,39 @@
+<div class="container sign-in-up">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="tab-content">
+
+        <div class="tab-pane fade in active">
+          <form name="reg">
+            <div class="form-group">
+              <div class="right-inner-addon">
+                <input class="form-control input-lg" placeholder="Login" type="text" ng-model="form.login">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="right-inner-addon">
+                <input class="form-control input-lg" placeholder="Email" type="text" ng-model="form.email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="right-inner-addon">
+                <input class="form-control input-lg" placeholder="Password" type="password" ng-model="form.password">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary" ng-click="performLogin()" id="log-btn">
+            <span aria-hidden="true" ng-show="inProgress"
+                  class="glyphicon glyphicon-refresh spinning no-animation"></span>
+            Register
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
