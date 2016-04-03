@@ -11,8 +11,4 @@ describe('Service: registerService', function () {
     registerService = _registerService_;
   }));
 
-  it('should do something', function () {
-    expect(!!registerService).toBe(true);
-  });
-
 });

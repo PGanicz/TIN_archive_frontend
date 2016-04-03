@@ -11,8 +11,4 @@ describe('Service: login', function () {
     login = _login_;
   }));
 
-  it('should do something', function () {
-    expect(!!login).toBe(true);
-  });
-
 });
