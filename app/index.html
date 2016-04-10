@@ -41,7 +41,8 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/login" ng-show="!isLoggedIn()">Login</a></li>
               <li><a ng-href="#/register" ng-show="!isLoggedIn()">Register</a></li>
-              <li><a ng-href="#/userInterface" ng-show="isLoggedIn()">{{userName}}</a></li>
+              <li><a ng-href="#/game" ng-show="isLoggedIn()">Search for game</a></li>
+              <li><a ng-href="#/user" ng-show="isLoggedIn()">{{userName}}</a></li>
               <li><a ng-href="#/" ng-show="isLoggedIn()" ng-click="logout()">Logout</a></li>
             </ul>
           </div>
@@ -93,7 +94,7 @@
         <script src="scripts/services/userservice.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/header.js"></script>
-        <script src="scripts/controllers/logout.js"></script>
+        <script src="scripts/controllers/user.js"></script>
         <!-- endbuild -->
 </body>
 </html>
