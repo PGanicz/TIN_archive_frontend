@@ -8,7 +8,7 @@
  * Controller of the gwintApp
  */
 angular.module('gwintApp')
-  .controller('LoginCtrl', function ($scope, $location, userService) {
+  .controller('LoginCtrl', function ($http, $scope, $location, userService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -27,12 +27,10 @@ angular.module('gwintApp')
       var btn = $('#log-btn');
       btn.attr('disabled', 'disabled');
 
-      userService.performLogin($scope.login.login, $scope.login.password).then(function () {
-      }, function (error) {
-      }).finally(function () {
-        $scope.inProgress = false;
-        btn.removeAttr('disabled');
-        $location.path('#/');
-      });
+      userService.performLogin($scope.username, $scope.password);
+
+      $scope.inProgress = false;
+      btn.removeAttr('disabled');
+      $location.path('#/');
     }
   });

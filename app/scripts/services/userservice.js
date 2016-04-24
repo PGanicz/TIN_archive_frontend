@@ -10,25 +10,23 @@
 angular.module('gwintApp')
   .service('userService', function ($cookieStore, $http, $q) {
 
-    this.performLogin = function (login, password) {
-      // TODO usunac - tylko do testow
-      $cookieStore.put("userName", login);
-      $cookieStore.put("token", "Smieszke");
-
-      return $http({
+    this.performLogin = function (userName, password) {
+      $http({
         method: 'POST',
-        url: '/user/login',
+        url: '/asd',
+        data: {
+          'username': userName,
+          'password': password
+        },
         headers: {
-          'Content-Type': 'application/json',
-          'data-login': login,
-          'data-password': password
+          'Content-Type': 'application/json'
         }
       }).then(function (response) {
         var token = response.data.token;
         var userName = response.data.userName;
 
         $cookieStore("userName", userName);
-        $cookieStore("token", token);
+        $cookieStore("token", "TOKEN");
 
         return $q.resolve(response.data);
       }, function (error) {
@@ -43,18 +41,14 @@ angular.module('gwintApp')
     this.performRegister = function (login, password, email) {
       return $http({
         method: 'POST',
-        url: '/user/register',
-        headers: {
-          'Content-Type': 'application/json',
-          'data-login': login,
-          'data-password': password,
-          'data-email': email
+        url: 'user/register',
+        dataType: 'json',
+        data: {
+          'username': login,
+          'password': password,
+          'email': email
         }
       }).then(function (response) {
-        var token = response.data.token;
-
-        $cookieStore("token", token);
-
         return $q.resolve(response.data);
       }, function (error) {
         var message = 'There was a problem logging in, check if the backend server is up and running. (Error ' + error.status + ': ' + error.statusText + ')';
@@ -74,7 +68,7 @@ angular.module('gwintApp')
       $cookieStore.remove("userName");
     };
 
-    this.getUserName = function() {
+    this.getUserName = function () {
       return $cookieStore.get("userName");
     }
 
