@@ -11,30 +11,24 @@ angular.module('gwintApp')
   .service('userService', function ($cookieStore, $http, $q) {
 
     this.performLogin = function (userName, password) {
+      var Indata = {username: 'aa', password: 'bb'};
       $http({
         method: 'POST',
-        url: '/asd',
-        data: {
-          'username': userName,
-          'password': password
-        },
-        headers: {
-          'Content-Type': 'application/json'
+        url: '/user/login',
+        params: {
+          username: userName,
+          password: password
         }
       }).then(function (response) {
-        var token = response.data.token;
-        var userName = response.data.userName;
+        //var token = response.data.token;
+        //var userName = response.data.userName;
+        window.alert("OK");
+        $cookieStore.put("userName", userName);
+        $cookieStore.put("token", "TOKEN");
 
-        $cookieStore("userName", userName);
-        $cookieStore("token", "TOKEN");
-
-        return $q.resolve(response.data);
+        //return $q.resolve(response.data);
       }, function (error) {
-        var message = 'There was a problem logging in, check if the backend server is up and running. (Error ' + error.status + ': ' + error.statusText + ')';
-        if (error.status === 401) {
-          message = 'User is already registered: ' + email;
-        }
-        return $q.reject(message);
+        window.alert("DUPA");
       });
     };
 
@@ -64,13 +58,18 @@ angular.module('gwintApp')
     };
 
     this.logout = function () {
-      $cookieStore.remove("token");
-      $cookieStore.remove("userName");
+      $http.get('user/logout').then(function () {
+          $cookieStore.remove("token");
+          $cookieStore.remove("userName");
+        },
+        function () {
+          window.alert("Nie udalo sie wylogowac!");
+        }
+      )
     };
 
     this.getUserName = function () {
       return $cookieStore.get("userName");
     }
-
   }
 );
