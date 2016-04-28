@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngNotify'
+    'ngNotify',
+    'angular-md5'
   ])
   .config(function ($routeProvider) {
     $routeProvider

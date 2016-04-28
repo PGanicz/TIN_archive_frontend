@@ -8,7 +8,7 @@
  * Service in the gwintApp.
  */
 angular.module('gwintApp')
-  .service('userService', function ($cookieStore, $http, $q, ngNotify) {
+  .service('userService', function ($sanitize, $rootScope, $cookieStore, $http, $q, ngNotify, md5) {
 
     this.performLogin = function (userName, password) {
       $http({
@@ -16,18 +16,18 @@ angular.module('gwintApp')
         url: '/user/login',
         params: {
           username: userName,
-          password: password
+          password: md5.createHash(password)
         }
       }).then(function (response) {
         //var token = response.data.token;
         //var userName = response.data.userName;
         $cookieStore.put("userName", userName);
         $cookieStore.put("token", "TOKEN");
-
-        ngNotify.set('Zalogowales sie', 'success');
-        //return $q.resolve(response.data);
+        $rootScope.authenticated = true;
+        ngNotify.set('Udalo sie zalogowac!', 'success');
       }, function (error) {
-        ngNotify.set('Nie udalo sie zalogowac', 'error');
+        $rootScope.authenticated = false;
+        ngNotify.set('Podales niepoprawne dane!', 'error');
       });
     };
 
@@ -38,19 +38,13 @@ angular.module('gwintApp')
         dataType: 'json',
         data: {
           'username': login,
-          'password': password,
+          'password': md5.createHash(password),
           'email': email
         }
       }).then(function (response) {
-        ngNotify.set('Udalo sie zarejestrowac', 'success');
-        return $q.resolve(response.data);
+        ngNotify.set('Zalozono konto!', 'success');
       }, function (error) {
-        ngNotify.set('Nie udalo sie zarejestrowac', 'error');
-        var message = 'There was a problem logging in, check if the backend server is up and running. (Error ' + error.status + ': ' + error.statusText + ')';
-        if (error.status === 401) {
-          message = 'User is already registered: ' + email;
-        }
-        return $q.reject(message);
+        ngNotify.set('Nie udalo sie zalozyc konta!', 'error');
       });
     };
 
@@ -60,12 +54,12 @@ angular.module('gwintApp')
 
     this.logout = function () {
       $http.get('user/logout').then(function () {
-          ngNotify.set('Wylogowano', 'success');
           $cookieStore.remove("token");
           $cookieStore.remove("userName");
+          ngNotify.set('Wylogowano!', 'success');
         },
         function () {
-          ngNotify.set('Blad podczas wylogowywania', 'error');
+          ngNotify.set('Nie udalo sie wylogowac!', 'error');
         }
       )
     };
