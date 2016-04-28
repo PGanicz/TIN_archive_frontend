@@ -11,19 +11,19 @@ angular.module('gwintApp')
   .service('userService', function ($sanitize, $rootScope, $cookieStore, $http, $q, ngNotify, md5) {
 
     this.performLogin = function (userName, password) {
-      $http({
+      return $http({
         method: 'POST',
         url: '/user/login',
         params: {
           username: userName,
           password: md5.createHash(password)
         }
-      }).then(function (response) {
-        //var token = response.data.token;
-        //var userName = response.data.userName;
+      }).then(function () {
         $cookieStore.put("userName", userName);
         $cookieStore.put("token", "TOKEN");
+
         $rootScope.authenticated = true;
+
         ngNotify.set('Udalo sie zalogowac!', 'success');
       }, function (error) {
         $rootScope.authenticated = false;
@@ -66,6 +66,43 @@ angular.module('gwintApp')
 
     this.getUserName = function () {
       return $cookieStore.get("userName");
-    }
+    };
+
+    this.getUserData = function () {
+      return $http.get('user/settings');
+    };
+
+    this.changePassword = function (old_password, new_password) {
+      return $http({
+        method: 'POST',
+        url: '/user/settings',
+        params: {
+          password: md5.createHash(old_password),
+          new_password: md5.createHash(new_password)
+        }
+      }).then(function () {
+        ngNotify.set('Udalo sie zmienic haslo!', 'success');
+        $('#changePasswordModal').modal('hide');
+      }, function (error) {
+        ngNotify.set('Podales niepoprawne haslo!', 'error');
+      });
+    };
+
+    this.changeEmail = function (password, new_email) {
+      return $http({
+        method: 'POST',
+        url: '/user/settings',
+        params: {
+          password: md5.createHash(password),
+          email: new_email
+        }
+      }).then(function () {
+        ngNotify.set('Udalo sie zmienic adres email!', 'success');
+        $('#changeEMailModal').modal('hide');
+      }, function (error) {
+        ngNotify.set('Podales niepoprawne haslo!', 'error');
+      });
+    };
+
   }
 );

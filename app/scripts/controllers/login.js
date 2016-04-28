@@ -8,7 +8,7 @@
  * Controller of the gwintApp
  */
 angular.module('gwintApp')
-  .controller('LoginCtrl', function ($http, $scope, $location, userService) {
+  .controller('LoginCtrl', function ($rootScope, $http, $scope, $location, userService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,7 +17,7 @@ angular.module('gwintApp')
 
     $scope.inProgress = false;
 
-    if(userService.isLoggedIn()) {
+    if (userService.isLoggedIn()) {
       $location.path('#/');
     }
 
