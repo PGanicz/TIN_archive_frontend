@@ -26,8 +26,6 @@ angular.module('gwintApp')
     $scope.logout = function () {
       userService.logout();
       $scope.isLogged = false;
-
-      window.alert("Wylogowano");
     }
 
   });

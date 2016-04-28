@@ -8,10 +8,9 @@
  * Service in the gwintApp.
  */
 angular.module('gwintApp')
-  .service('userService', function ($cookieStore, $http, $q) {
+  .service('userService', function ($cookieStore, $http, $q, ngNotify) {
 
     this.performLogin = function (userName, password) {
-      var Indata = {username: 'aa', password: 'bb'};
       $http({
         method: 'POST',
         url: '/user/login',
@@ -22,13 +21,13 @@ angular.module('gwintApp')
       }).then(function (response) {
         //var token = response.data.token;
         //var userName = response.data.userName;
-        window.alert("OK");
         $cookieStore.put("userName", userName);
         $cookieStore.put("token", "TOKEN");
 
+        ngNotify.set('Zalogowales sie', 'success');
         //return $q.resolve(response.data);
       }, function (error) {
-        window.alert("DUPA");
+        ngNotify.set('Nie udalo sie zalogowac', 'error');
       });
     };
 
@@ -43,8 +42,10 @@ angular.module('gwintApp')
           'email': email
         }
       }).then(function (response) {
+        ngNotify.set('Udalo sie zarejestrowac', 'success');
         return $q.resolve(response.data);
       }, function (error) {
+        ngNotify.set('Nie udalo sie zarejestrowac', 'error');
         var message = 'There was a problem logging in, check if the backend server is up and running. (Error ' + error.status + ': ' + error.statusText + ')';
         if (error.status === 401) {
           message = 'User is already registered: ' + email;
@@ -59,11 +60,12 @@ angular.module('gwintApp')
 
     this.logout = function () {
       $http.get('user/logout').then(function () {
+          ngNotify.set('Wylogowano', 'success');
           $cookieStore.remove("token");
           $cookieStore.remove("userName");
         },
         function () {
-          window.alert("Nie udalo sie wylogowac!");
+          ngNotify.set('Blad podczas wylogowywania', 'error');
         }
       )
     };
