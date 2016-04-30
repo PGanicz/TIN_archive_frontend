@@ -25,9 +25,17 @@ angular.module('gwintApp')
         $rootScope.authenticated = true;
 
         ngNotify.set('Udalo sie zalogowac!', 'success');
-      }, function (error) {
+      }, function (response) {
+        var status = response.status;
+
+        if (status == 401)
+          ngNotify.set('Podales niepoprawne dane!', 'error');
+        else if (status == 406)
+          ngNotify.set('Konto nieaktywne!', 'error');
+        else
+          ngNotify.set('Nieznany blad podczas logowania!', 'error');
+
         $rootScope.authenticated = false;
-        ngNotify.set('Podales niepoprawne dane!', 'error');
       });
     };
 
