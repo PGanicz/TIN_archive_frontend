@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name gwintApp.controller:AboutCtrl
+ * @name archiveApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the gwintApp
+ * Controller of the archiveApp
  */
-angular.module('gwintApp')
+angular.module('archiveApp')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

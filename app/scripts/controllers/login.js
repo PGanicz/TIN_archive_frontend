@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name gwintApp.controller:LoginCtrl
+ * @name archiveApp.controller:LoginCtrl
  * @description
  * # LoginCtrl
- * Controller of the gwintApp
+ * Controller of the archiveApp
  */
-angular.module('gwintApp')
+angular.module('archiveApp')
   .controller('LoginCtrl', function ($rootScope, $http, $scope, $location, userService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',

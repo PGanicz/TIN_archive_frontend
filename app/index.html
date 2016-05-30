@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="gwintApp">
+  <body ng-app="archiveApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -33,7 +33,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">gwint</a>
+            <a class="navbar-brand" href="#/">Archive Server</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -42,7 +42,6 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/login" ng-show="!isLoggedIn()">Login</a></li>
               <li><a ng-href="#/register" ng-show="!isLoggedIn()">Register</a></li>
-              <li><a ng-href="#/game" ng-show="isLoggedIn()">Search for game</a></li>
               <li><a ng-href="#/user" ng-show="isLoggedIn()">{{userName}}</a></li>
               <li><a ng-href="#/" ng-show="isLoggedIn()" ng-click="logout()">Logout</a></li>
             </ul>
@@ -57,7 +56,7 @@
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart-empty"></span> Gwint</p>
+        <p><span class="glyphicon glyphicon-heart-empty"></span> Archive Server</p>
       </div>
     </div>
 

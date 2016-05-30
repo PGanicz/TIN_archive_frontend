@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name gwintApp.controller:UserCtrl
+ * @name archiveApp.controller:UserCtrl
  * @description
  * # UserCtrl
- * Controller of the gwintApp
+ * Controller of the archiveApp
  */
-angular.module('gwintApp')
+angular.module('archiveApp')
   .controller('UserCtrl', function ($scope, ngNotify, userService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',

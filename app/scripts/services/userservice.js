@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name gwintApp.userService
+ * @name archiveApp.userService
  * @description
  * # loginService
- * Service in the gwintApp.
+ * Service in the archiveApp.
  */
-angular.module('gwintApp')
+angular.module('archiveApp')
   .service('userService', function ($sanitize, $rootScope, $cookieStore, $http, $q, ngNotify, md5) {
 
     this.performLogin = function (userName, password) {

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name gwintApp.controller:RegisterCtrl
+ * @name archiveApp.controller:RegisterCtrl
  * @description
  * # RegisterCtrl
- * Controller of the gwintApp
+ * Controller of the archiveApp
  */
-angular.module('gwintApp')
+angular.module('archiveApp')
   .controller('RegisterCtrl', function ($scope, $location, userService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',

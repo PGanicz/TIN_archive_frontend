@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name gwintApp.controller:HeaderCtrl
+ * @name archiveApp.controller:HeaderCtrl
  * @description
  * # HeaderCtrl
- * Controller of the gwintApp
+ * Controller of the archiveApp
  */
-angular.module('gwintApp')
+angular.module('archiveApp')
   .controller('HeaderCtrl', function ($scope, userService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',

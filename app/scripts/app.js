@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name gwintApp
+ * @name archiveApp
  * @description
- * # gwintApp
+ * # archiveApp
  *
  * Main module of the application.
  */
 angular
-  .module('gwintApp', [
+  .module('archiveApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
