@@ -43,6 +43,7 @@
               <li><a ng-href="#/login" ng-show="!isLoggedIn()">Login</a></li>
               <li><a ng-href="#/register" ng-show="!isLoggedIn()">Register</a></li>
               <li><a ng-href="#/user" ng-show="isLoggedIn()">{{userName}}</a></li>
+              <li><a ng-href="#/files" ng-show="isLoggedIn()">Files</a></li>
               <li><a ng-href="#/" ng-show="isLoggedIn()" ng-click="logout()">Logout</a></li>
             </ul>
           </div>
@@ -93,6 +94,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/files.js"></script>
         <script src="scripts/services/userservice.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/header.js"></script>

@@ -46,6 +46,11 @@ angular
         controller: 'UserCtrl',
         controllerAs: 'user'
       })
+      .when('/files', {
+        templateUrl: 'views/files.html',
+        controller: 'FilesCtrl',
+        controllerAs: 'files'
+      })
       .otherwise({
         redirectTo: '/'
       });
