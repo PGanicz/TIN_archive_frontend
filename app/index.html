@@ -39,11 +39,11 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/login" ng-show="!isLoggedIn()">Login</a></li>
               <li><a ng-href="#/register" ng-show="!isLoggedIn()">Register</a></li>
-              <li><a ng-href="#/user" ng-show="isLoggedIn()">{{userName}}</a></li>
               <li><a ng-href="#/files" ng-show="isLoggedIn()">Files</a></li>
+              <li><a ng-href="#/admin" ng-show="isAdmin()">Pending Users</a></li>
+              <li><a ng-href="#/user" ng-show="isLoggedIn()">{{userName}}</a></li>
               <li><a ng-href="#/" ng-show="isLoggedIn()" ng-click="logout()">Logout</a></li>
             </ul>
           </div>
@@ -92,7 +92,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/admin.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/files.js"></script>
         <script src="scripts/services/userservice.js"></script>

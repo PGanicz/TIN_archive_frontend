@@ -1,4 +1,4 @@
 
 <div ng-repeat="file in files">
-  <a href="/files/name/{{file}}" >{{file}}</a>
+  {{file}}  <a  class="btn btn-primary" href="/files/name/{{file}}" >Download</a>  <a  class="btn btn-primary" href="/files/remove/{{file}}" >Remove</a>
 </div>

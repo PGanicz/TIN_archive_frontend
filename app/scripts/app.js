@@ -26,11 +26,6 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
@@ -50,6 +45,11 @@ angular
         templateUrl: 'views/files.html',
         controller: 'FilesCtrl',
         controllerAs: 'files'
+      })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl',
+        controllerAs: 'admin'
       })
       .otherwise({
         redirectTo: '/'

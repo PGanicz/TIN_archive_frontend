@@ -59,11 +59,24 @@ angular.module('archiveApp')
     this.isLoggedIn = function () {
       return $cookieStore.get("token") != null;
     };
-
+    this.checkAdmin = function() {
+      return $http({
+        method: 'GET',
+        url: '/admin',
+      }).then(function () {
+        $cookieStore.put("admin",true);
+      }, function (response) {
+        $cookieStore.put("admin",false);
+      });
+    };
+    this.isAdmin = function() {
+      return $cookieStore.get("admin");
+    };
     this.logout = function () {
       $http.get('user/logout').then(function () {
           $cookieStore.remove("token");
           $cookieStore.remove("userName");
+          $cookieStore.remove("admin");
           ngNotify.set('Wylogowano!', 'success');
         },
         function () {

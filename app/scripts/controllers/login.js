@@ -28,9 +28,11 @@ angular.module('archiveApp')
       btn.attr('disabled', 'disabled');
 
       userService.performLogin($scope.username, $scope.password);
-
+      userService.checkAdmin();
       $scope.inProgress = false;
       btn.removeAttr('disabled');
       $location.path('#/');
     }
+
   });
+

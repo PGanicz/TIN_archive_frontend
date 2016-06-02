@@ -22,7 +22,9 @@ angular.module('archiveApp')
 
       return isLogged;
     };
-
+    $scope.isAdmin = function() {
+        return userService.isAdmin();
+    }
     $scope.logout = function () {
       userService.logout();
       $scope.isLogged = false;
