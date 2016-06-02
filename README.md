@@ -1,4 +1,4 @@
-# gwint
+This is frontend for project TIN_archive_server_http
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.15.1.
