@@ -1,4 +1,9 @@
-
-<div ng-repeat="file in files">
-  {{file}}  <a  class="btn btn-primary" href="/files/name/{{file}}" >Download</a>  <a  class="btn btn-primary" href="/files/remove/{{file}}" >Remove</a>
+<h1>Files</h1>
+<div ng-repeat="filewithstamp in files">
+  <H3>{{filewithstamp.file.deviceName}}: {{filewithstamp.file.filename}}  </H3>
+  <div ng-repeat="stamp in filewithstamp.fileVersion">
+     {{stamp.timestamp}} <a  class="btn btn-primary" href="/files/download/{{filewithstamp.file.filename}}/{{filewithstamp.file.deviceName}}/{{stamp.timestamp}}/" >
+    Download</a>  <a  class="btn btn-primary" href="/files/remove/{{filewithstamp.file.filename}}/{{filewithstamp.file.deviceName}}/{{stamp.timestamp}}" >Remove</a>
+  </div>
 </div>
+

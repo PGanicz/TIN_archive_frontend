@@ -9,11 +9,7 @@
  */
 angular.module('archiveApp')
   .controller('FilesCtrl', function ($http,$scope,userService) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
     if(userService.isLoggedIn())
     {
       $http({
@@ -23,9 +19,8 @@ angular.module('archiveApp')
         console.log(response);
         $scope.files = response.data;
       }, function (response) {
+        console.log("zle");
         var status = response.status;
-
-        ngNotify.set('Nieznany blad podczas pobierania listy plikow!', 'error');
         $rootScope.authenticated = false;
       });
     }
